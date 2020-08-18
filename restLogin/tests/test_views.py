@@ -159,8 +159,7 @@ class TokenTestCase(BaseTestCase):
         if orig_iat:
             payload['orig_iat'] = timegm(orig_iat.utctimetuple())
 
-        token = utils.jwt_encode_handler(payload)
-        return token
+        return utils.jwt_encode_handler(payload)
 
 class VerifyJSONWebTokenTestsSymmetric(TokenTestCase):
 

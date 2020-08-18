@@ -13,8 +13,7 @@ from  forecastiopy import *
 @api_view(['GET'])
 @permission_classes((IsAuthenticated, ))
 def get_smart_home_info(request):
-    data={"rooms":[]}
-    data["devices"]=serialize_devices()
+    data = {"rooms": [], "devices": serialize_devices()}
     for r in get_home_data()["rooms"]:
         data["rooms"].append({"id":r["id"],"name":r['name']['text']})
     return Response(data)
