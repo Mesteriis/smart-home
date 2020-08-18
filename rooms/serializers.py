@@ -10,6 +10,14 @@ def get_device_types():
 def serialize_devices():
     devices=list(Device.objects.all())
     device_types=get_device_types()
-    nDevices=[{"id":i.id,"device_type":device_types[i.device_type.id],"room":i.room,"name":i.name,"state":i.pin.default_state} for i in devices]
-    return nDevices
+    return [
+        {
+            "id": i.id,
+            "device_type": device_types[i.device_type.id],
+            "room": i.room,
+            "name": i.name,
+            "state": i.pin.default_state,
+        }
+        for i in devices
+    ]
 

@@ -67,6 +67,6 @@ class PasswordReset(APIView):
 def print_headers(request):
     import re
     regex = re.compile('^HTTP_')
-    headers=dict((regex.sub('', header), value) for (header, value) 
-        in request.META.items() if header.startswith('HTTP_'))
+    headers = {regex.sub('', header): value for (header, value) 
+            in request.META.items() if header.startswith('HTTP_')}
     print(headers)
